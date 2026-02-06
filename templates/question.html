@@ -3,17 +3,45 @@
 <head>
 <meta charset="UTF-8">
 <title>Questions 💖</title>
+
 <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
 <style>
-body { background:black; color:white; font-family:sans-serif; text-align:center; }
-button { margin:10px; padding:15px; font-size:20px; border:none; border-radius:8px; background:#ff4081; color:white; cursor:pointer; }
+body{
+    background:black;
+    color:white;
+    font-family:sans-serif;
+    text-align:center;
+    overflow:hidden;
+}
+
+button{
+    margin:10px;
+    padding:15px 22px;
+    font-size:20px;
+    border:none;
+    border-radius:10px;
+    background:#ff4081;
+    color:white;
+    cursor:pointer;
+}
+
+canvas{
+    position:fixed;
+    top:0;
+    left:0;
+    pointer-events:none;
+}
 </style>
 </head>
 <body>
 
+<!-- MUSIC CONTINUES -->
 <iframe src="{{ url_for('audio') }}" style="display:none;"></iframe>
 
 <div id="box"></div>
+
+<canvas id="fireworks"></canvas>
 
 <script>
 const questions = [
@@ -28,22 +56,60 @@ const questions = [
 let questionIndex = 0;
 const box = document.getElementById("box");
 
+const canvas = document.getElementById("fireworks");
+const ctx = canvas.getContext("2d");
+canvas.width = innerWidth;
+canvas.height = innerHeight;
+
+let particles = [];
+
 function showQuestion(){
     let html = `<h2>${questions[questionIndex].q}</h2>`;
-    questions[questionIndex].a.forEach(ans => { html += `<button onclick="nextQuestion()">${ans}</button>`; });
+    questions[questionIndex].a.forEach(ans=>{
+        html += `<button onclick="celebrate()">${ans}</button>`;
+    });
     box.innerHTML = html;
 }
 
-function nextQuestion(){
-    questionIndex++;
-    if(questionIndex < questions.length){
-        showQuestion();
-    } else {
-        box.innerHTML = `<h1>🎆 I LOVE YOU FOREVER 💖</h1>`;
+function celebrate(){
+    for(let i=0;i<150;i++){
+        particles.push({
+            x:Math.random()*canvas.width,
+            y:Math.random()*canvas.height/2,
+            vx:(Math.random()-0.5)*9,
+            vy:(Math.random()-0.5)*9,
+            life:90
+        });
     }
+
+    setTimeout(()=>{
+        questionIndex++;
+        if(questionIndex < questions.length){
+            showQuestion();
+        } else {
+            box.innerHTML = `<h1>🎆 I LOVE YOU FOREVER 💖</h1>`;
+        }
+    },400);
 }
+
+function animate(){
+    ctx.clearRect(0,0,canvas.width,canvas.height);
+    particles.forEach((p,i)=>{
+        ctx.fillStyle=`hsl(${Math.random()*360},100%,60%)`;
+        ctx.beginPath();
+        ctx.arc(p.x,p.y,3.5,0,Math.PI*2);
+        ctx.fill();
+        p.x+=p.vx;
+        p.y+=p.vy;
+        p.life--;
+        if(p.life<=0) particles.splice(i,1);
+    });
+    requestAnimationFrame(animate);
+}
+animate();
 
 window.onload = showQuestion;
 </script>
+
 </body>
 </html>
