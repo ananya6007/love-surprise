@@ -6,6 +6,22 @@
 <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
+<div id="startScreen" style="
+position:fixed;
+top:0;left:0;
+width:100%;height:100%;
+background:black;
+color:white;
+display:flex;
+align-items:center;
+justify-content:center;
+flex-direction:column;
+z-index:9999;
+font-size:24px;
+">
+💖 Tap to start our love story 💖
+<button onclick="startExperience()" style="margin-top:20px;padding:15px 25px;font-size:20px;">Start 💕</button>
+</div>
 
 <!-- Hidden music -->
 <iframe src="{{ url_for('audio') }}" style="display:none;"></iframe>
@@ -28,5 +44,15 @@ function nextImage() {
 
 setInterval(nextImage, 3000);
 </script>
+    <script>
+const music = new Audio("{{ url_for('static', filename='music/love.mp3') }}");
+music.loop = true;
+
+function startExperience(){
+    music.play();
+    document.getElementById("startScreen").style.display="none";
+}
+</script>
+
 </body>
 </html>
