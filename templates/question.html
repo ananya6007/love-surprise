@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Questions 💖</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+<style>
+body { background:black; color:white; font-family:sans-serif; text-align:center; }
+button { margin:10px; padding:15px; font-size:20px; border:none; border-radius:8px; background:#ff4081; color:white; cursor:pointer; }
+</style>
+</head>
+<body>
+
+<iframe src="{{ url_for('audio') }}" style="display:none;"></iframe>
+
+<div id="box"></div>
+
+<script>
+const questions = [
+  {q:"💖 Who is your forever person?", a:["SUHANA","CHINNI 😘"]},
+  {q:"💕 Who loves ASHU more?", a:["ANANYA 💕","ANUSHA 💗"]},
+  {q:"💍 Will you stay with me forever?", a:["YES 💍","ALWAYS ♾️"]},
+  {q:"😍 Are you mine even after marriage?", a:["FOREVER 😍","No 🥱"]},
+  {q:"❤️ Do you love me?", a:["No 🥱","INFINITE ♾️"]},
+  {q:"💖 Will you be my Valentine every year?", a:["No 🥱","FOREVER 💕"]}
+];
+
+let questionIndex = 0;
+const box = document.getElementById("box");
+
+function showQuestion(){
+    let html = `<h2>${questions[questionIndex].q}</h2>`;
+    questions[questionIndex].a.forEach(ans => { html += `<button onclick="nextQuestion()">${ans}</button>`; });
+    box.innerHTML = html;
+}
+
+function nextQuestion(){
+    questionIndex++;
+    if(questionIndex < questions.length){
+        showQuestion();
+    } else {
+        box.innerHTML = `<h1>🎆 I LOVE YOU FOREVER 💖</h1>`;
+    }
+}
+
+window.onload = showQuestion;
+</script>
+</body>
+</html>

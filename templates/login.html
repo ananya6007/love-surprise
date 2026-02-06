@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>My Forever Valentine 💖</title>
+
+<style>
+body{
+margin:0;
+height:100vh;
+background:linear-gradient(to bottom,#ff6a88,#ff99ac);
+overflow:hidden;
+display:flex;
+justify-content:center;
+align-items:center;
+font-family:Segoe UI;
+}
+
+.box{
+background:rgba(255,255,255,0.9);
+padding:45px;
+border-radius:30px;
+text-align:center;
+box-shadow:0 0 40px hotpink;
+animation:zoom 1s ease;
+}
+
+@keyframes zoom{
+from{transform:scale(.3);opacity:0}
+to{transform:scale(1);opacity:1}
+}
+
+input{
+padding:12px;
+border-radius:20px;
+border:none;
+width:220px;
+font-size:18px;
+text-align:center;
+}
+
+button{
+margin-top:15px;
+padding:12px 30px;
+border:none;
+border-radius:25px;
+background:#ff3366;
+color:white;
+font-size:18px;
+cursor:pointer;
+}
+
+.heart,.sparkle{
+position:absolute;
+animation:fall linear infinite;
+}
+
+@keyframes fall{
+from{transform:translateY(-100px)}
+to{transform:translateY(110vh)}
+}
+</style>
+</head>
+
+<body>
+
+<audio autoplay loop>
+<source src="/static/music/love.mp3" type="audio/mp3">
+</audio>
+
+<div class="box">
+<h1>💘 My Love Surprise 💘</h1>
+<p>Enter our secret love code ❤️</p>
+
+<form method="POST">
+<input type="password" name="password" placeholder="Love Code 💕"><br>
+<button>Unlock 💖</button>
+</form>
+</div>
+
+<script>
+function rain(){
+let h=document.createElement("div");
+h.className="heart";
+h.innerHTML="❤️";
+h.style.left=Math.random()*100+"vw";
+h.style.fontSize=(20+Math.random()*40)+"px";
+h.style.animationDuration=(3+Math.random()*4)+"s";
+document.body.appendChild(h);
+setTimeout(()=>h.remove(),6000);
+}
+setInterval(rain,150);
+
+function sparkle(){
+let s=document.createElement("div");
+s.className="sparkle";
+s.innerHTML="✨";
+s.style.left=Math.random()*100+"vw";
+s.style.fontSize=(10+Math.random()*20)+"px";
+s.style.animationDuration=(2+Math.random()*3)+"s";
+document.body.appendChild(s);
+setTimeout(()=>s.remove(),5000);
+}
+setInterval(sparkle,300);
+</script>
+
+</body>
+</html>

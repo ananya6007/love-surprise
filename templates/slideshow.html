@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Slideshow 💖</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<!-- Hidden music -->
+<iframe src="{{ url_for('audio') }}" style="display:none;"></iframe>
+
+<!-- Slideshow -->
+<img id="slide" src="/static/images/{{ images[0] }}" style="width:90%; margin:20px auto; display:block; border-radius:10px;">
+
+<script>
+const images = {{ images|tojson }};
+let index = 0;
+
+function nextImage() {
+    index++;
+    if(index < images.length){
+        document.getElementById("slide").src = "/static/images/" + images[index];
+    } else {
+        window.location.href = "{{ url_for('question') }}";
+    }
+}
+
+setInterval(nextImage, 3000);
+</script>
+</body>
+</html>
