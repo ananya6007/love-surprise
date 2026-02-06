@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>My Forever Valentine 💕</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+
+<!-- Background Music -->
+<audio autoplay loop>
+    <source src="/static/music/love.mp3" type="audio/mpeg">
+</audio>
+
+<h1>Hey My Beautiful ❤️</h1>
+<p>You are my happiness, my love, my forever 💖</p>
+
+<!-- Slideshow -->
+<div class="slideshow">
+    <img id="slide" src="/static/images">
+</div>
+
+<script>
+let images = [
+{% for img in images %}
+"/static/images/{{ img }}",
+{% endfor %}
+];
+</script>
+
+<!-- Love Story -->
+<div class="story">
+    <p>Once I met the most amazing girl 💕</p>
+    <p>You turned my life into a beautiful love story 🌸</p>
+    <p>Every smile of yours is my favorite view 😍</p>
+    <p>I promise to love you forever and always ♾️</p>
+</div>
+
+<h2>Answer These If You Love Me 😘</h2>
+
+<div class="quiz">
+
+<p>1. Who is your forever person? 💍</p>
+<button onclick="fireworks()">YOU ❤️</button>
+<button onclick="fireworks()">ME 😘</button>
+
+<p>2. Who loves more? 🥰</p>
+<button onclick="fireworks()">ME</button>
+<button onclick="fireworks()">YOU</button>
+
+<p>3. Will you stay with me forever? ♾️</p>
+<button onclick="fireworks()">YES ❤️</button>
+<button onclick="fireworks()">ALWAYS 💖</button>
+
+<p>4. Who is the lucky one? 🍀</p>
+<button onclick="fireworks()">ME</button>
+<button onclick="fireworks()">YOU</button>
+
+<p>5. Is our love infinite? 🌌</p>
+<button onclick="fireworks()">YES 💞</button>
+<button onclick="fireworks()">FOREVER 💘</button>
+
+<p>6. Will you be my Valentine every year? 💌</p>
+<button onclick="fireworks()">YES 🎆</button>
+<button onclick="fireworks()">ALWAYS ❤️</button>
+
+<p>7. Do you love me more than everything? 😍</p>
+<button onclick="fireworks()">YESSS 💖</button>
+<button onclick="fireworks()">OF COURSE 💕</button>
+
+<p>8. Are we soulmates? ✨</p>
+<button onclick="fireworks()">YES 💍</button>
+<button onclick="fireworks()">FOREVER 💞</button>
+
+</div>
+
+<h2 class="final">I Love You More Than Words Can Say 💘</h2>
+
+<script src="/static/script.js"></script>
+</body>
+</html>
