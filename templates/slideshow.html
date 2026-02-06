@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="stylesheet" href="/static/style.css">
+</head>
+<script>
+for(let i=0;i<40;i++){
+ let h=document.createElement("div");
+ h.className="heart";
+ h.innerHTML="💗";
+ h.style.left=Math.random()*100+"vw";
+ h.style.animationDuration=(Math.random()*3+3)+"s";
+ document.body.appendChild(h);
+}
+</script>
+
+<body class="bg">
+
+<h1>Our Love Story 💕</h1>
+
+<div class="frame">
+<img id="slide" src="/static/images/{{ images[0] }}">
+</div>
+
+<button onclick="next()">Next 💘</button>
+
+<script>
+let photos = {{ images|tojson }};
+let i = 0;
+
+setInterval(()=>{
+ i=(i+1)%photos.length;
+ document.getElementById("slide").src="/static/images/"+photos[i];
+},2500);
+
+function next(){
+ window.location.href="/question";
+}
+</script>
+
+</body>
+</html>

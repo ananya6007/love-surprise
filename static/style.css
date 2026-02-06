@@ -1,0 +1,140 @@
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Segoe UI, sans-serif;
+}
+
+body{
+background:black;
+overflow:hidden;
+color:white;
+text-align:center;
+}
+
+/* Fireworks canvas */
+canvas{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+z-index:1;
+}
+
+/* Main card */
+.card{
+position:relative;
+z-index:5;
+margin-top:90px;
+background:rgba(255,105,180,.92);
+padding:45px;
+border-radius:35px;
+width:420px;
+margin-left:auto;
+margin-right:auto;
+box-shadow:0 0 40px hotpink;
+animation:fadeIn .8s ease;
+}
+
+/* Smooth entrance */
+@keyframes fadeIn{
+from{opacity:0;transform:scale(.8)}
+to{opacity:1;transform:scale(1)}
+}
+
+/* Question text */
+.card h2{
+font-size:28px;
+margin-bottom:25px;
+}
+
+/* Buttons */
+button{
+margin:12px;
+padding:14px 30px;
+border:none;
+border-radius:30px;
+background:white;
+color:#ff3366;
+font-size:20px;
+cursor:pointer;
+transition:.3s;
+}
+
+button:hover{
+transform:scale(1.1);
+background:#ffe6f0;
+}
+
+/* Next button */
+.next{
+background:#ff3366;
+color:white;
+display:none;
+}
+
+/* Slideshow mobile style */
+.slideshow img{
+width:260px;
+height:460px;
+object-fit:cover;
+border-radius:30px;
+box-shadow:0 0 30px hotpink;
+margin-bottom:25px;
+animation:photoFade 1.5s ease;
+}
+
+@keyframes photoFade{
+from{opacity:0;transform:scale(.9)}
+to{opacity:1;transform:scale(1)}
+}
+
+/* Responsive for phones */
+@media(max-width:600px){
+.card{
+width:90%;
+padding:30px;
+margin-top:60px;
+}
+
+.card h2{
+font-size:22px;
+}
+
+button{
+font-size:18px;
+padding:12px 24px;
+}
+
+.slideshow img{
+width:80vw;
+height:85vh;
+}
+}
+#startScreen{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:black;
+z-index:9999;
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+color:white;
+font-size:30px;
+}
+
+#startScreen button{
+margin-top:25px;
+padding:15px 40px;
+border:none;
+border-radius:30px;
+background:hotpink;
+color:white;
+font-size:22px;
+cursor:pointer;
+}
